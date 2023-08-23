@@ -20,12 +20,12 @@ const Layout = () => {
     { title: "Course" },
     { title: "Student", spacing: true },
     {
-      title: "Schedules",
+      title: "Tasks",
       submenu: true,
       submenuItems: [
-        { title: "Submenu 1" },
-        { title: "Submenu 2" },
-        { title: "Submenu 3" },
+        { title: "Task 1" },
+        { title: "Task 2" },
+        { title: "Task 3" },
       ],
     },
     { title: "Classes" },
@@ -43,7 +43,7 @@ const Layout = () => {
         } duration-300   `}
       >
         <BsArrowLeftShort
-          className={` bg-white text-slate-400 text-3xl rounded-full absolute -right-4 top-9 border border-blue-100 cursor-pointer ${
+          className={` bg-white text-slate-200 text-3xl rounded-full absolute -right-4 top-9 border border-blue-100 cursor-pointer ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
