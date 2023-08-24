@@ -10,17 +10,19 @@ import { MdGraphicEq } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import "../App.css";
+import { Switch, Route, Link } from 'react-router-dom'; 
 
 const Layout = () => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setsubmenuOpen] = useState(false);
 
   const Menus = [
-    { title: "Dashboard" },
+    { title: "Dashboard" ,path:'/landing' },
     { title: "Course" },
     { title: "Student", spacing: true },
     {
       title: "Tasks",
+      path:'/tasks',
       submenu: true,
       submenuItems: [
         { title: "Task 1" },
@@ -73,16 +75,16 @@ const Layout = () => {
                   menu.spacing ? "mt-9" : "mt-2"
                 } mt-2 `}
               >
-                <span className="text-2xl block float-left">
+                <Link to={menu.path} className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
-                </span>
-                <span
+                </Link>
+                <Link to={menu.path}
                   className={`text-base font-medium flex-1 duration-200 ${
                     !open && "hidden"
                   }`}
                 >
                   {menu.title}
-                </span>
+                </Link>
                 {menu.submenu && (
                   <BsChevronDown
                     className={`${submenuOpen && "rotate-180"} text-white font-extrabold`}
