@@ -10,22 +10,24 @@ import { MdGraphicEq } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import "../App.css";
+import { Switch, Route, Link } from 'react-router-dom'; 
 
 const Layout = () => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setsubmenuOpen] = useState(false);
 
   const Menus = [
-    { title: "Dashboard" },
+    { title: "Dashboard" ,path:'/landing' },
     { title: "Course" },
     { title: "Student", spacing: true },
     {
-      title: "Schedules",
+      title: "Tasks",
+      path:'/tasks',
       submenu: true,
       submenuItems: [
-        { title: "Submenu 1" },
-        { title: "Submenu 2" },
-        { title: "Submenu 3" },
+        { title: "Task 1" },
+        { title: "Task 2" },
+        { title: "Task 3" },
       ],
     },
     { title: "Classes" },
@@ -43,7 +45,7 @@ const Layout = () => {
         } duration-300   `}
       >
         <BsArrowLeftShort
-          className={` bg-white text-slate-400 text-3xl rounded-full absolute -right-4 top-9 border border-blue-100 cursor-pointer ${
+          className={` bg-white text-slate-200 text-3xl rounded-full absolute -right-4 top-9 border border-blue-100 cursor-pointer ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -73,16 +75,16 @@ const Layout = () => {
                   menu.spacing ? "mt-9" : "mt-2"
                 } mt-2 `}
               >
-                <span className="text-2xl block float-left">
+                <Link to={menu.path} className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
-                </span>
-                <span
+                </Link>
+                <Link to={menu.path}
                   className={`text-base font-medium flex-1 duration-200 ${
                     !open && "hidden"
                   }`}
                 >
                   {menu.title}
-                </span>
+                </Link>
                 {menu.submenu && (
                   <BsChevronDown
                     className={`${submenuOpen && "rotate-180"} text-white font-extrabold`}
